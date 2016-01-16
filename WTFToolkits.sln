@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WTFToolkits", "WTFToolkits\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WTFToolkits.Popup", "WTFToolkits.Popup\WTFToolkits.Popup.csproj", "{3BB5BB4F-AAEE-4452-AD02-9275E7C39357}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WTFToolkits.BindableBase", "WTFToolkits.BindableBase\WTFToolkits.BindableBase.csproj", "{EAC4AE02-A43B-4619-AA42-53823A3DE7CE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{3BB5BB4F-AAEE-4452-AD02-9275E7C39357}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3BB5BB4F-AAEE-4452-AD02-9275E7C39357}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3BB5BB4F-AAEE-4452-AD02-9275E7C39357}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAC4AE02-A43B-4619-AA42-53823A3DE7CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAC4AE02-A43B-4619-AA42-53823A3DE7CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAC4AE02-A43B-4619-AA42-53823A3DE7CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAC4AE02-A43B-4619-AA42-53823A3DE7CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
