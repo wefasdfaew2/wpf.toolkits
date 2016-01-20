@@ -1,0 +1,43 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style TargetType="TextBlock" x:Key="ValidationTextStyle">
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="Foreground" Value="#f44336" />
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="RenderTransformOrigin" Value="1 0" />
+        <Setter Property="MaxWidth" Value="400" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="LayoutTransform">
+            <Setter.Value>
+                <ScaleTransform />
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Text.Length, RelativeSource={RelativeSource Self}}" Value="0">
+                <DataTrigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="(LayoutTransform).(ScaleTransform.ScaleY)"
+                                                             To="0"
+                                                             Duration="0:0:0.25" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </DataTrigger.EnterActions>
+                <DataTrigger.ExitActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="(LayoutTransform).(ScaleTransform.ScaleY)"
+                                                             To="1"
+                                                             Duration="0:0:0.25" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </DataTrigger.ExitActions>
+            </DataTrigger>
+
+        </Style.Triggers>
+    </Style>
+
+</ResourceDictionary>

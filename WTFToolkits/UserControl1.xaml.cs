@@ -20,9 +20,21 @@ namespace WTFToolkits
     /// </summary>
     public partial class UserControl1 : UserControl
     {
+        public SimpleViewModel ViewModel { get; set; }
+
         public UserControl1()
         {
+            this.ViewModel = new SimpleViewModel();
+            this.ViewModel.OnSaveRequest += OnSaveModel;
+            this.DataContext = this.ViewModel;
+
             InitializeComponent();
+        }
+
+        public void OnSaveModel()
+        {
+            MessageBox.Show("saved");
+            // this.ViewModel.on
         }
     }
 }

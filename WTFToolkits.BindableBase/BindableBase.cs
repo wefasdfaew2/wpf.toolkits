@@ -33,7 +33,7 @@ namespace WTFToolkits.BindableBase
         ///     True if the value was changed, false if the existing value matched the
         ///     desired value.
         /// </returns>
-        protected bool SetProperty<T>(ref T storage, T value, [CallerMemberName] string propertyName = null)
+        protected virtual bool SetProperty<T>(ref T storage, T value, [CallerMemberName] string propertyName = null)
         {
             if (Equals(storage, value))
             {
@@ -82,10 +82,15 @@ namespace WTFToolkits.BindableBase
             get { return _errors.Count > 0; }
         }
 
-        protected override void SetProperty<T>(ref T member, T val, [CallerMemberName] string propertyName = null)
+        protected override bool SetProperty<T>(ref T member, T val, [CallerMemberName] string propertyName = null)
         {
-            base.SetProperty<T>(ref member, val, propertyName);
-            ValidateProperty(propertyName, val);
+            if (base.SetProperty<T>(ref member, val, propertyName))
+            {
+                ValidateProperty(propertyName, val);
+                return true;
+            }
+
+            return false;
         }
 
         private void ValidateProperty<T>(string propertyName, T value)
@@ -107,5 +112,11 @@ namespace WTFToolkits.BindableBase
             ErrorsChanged(this, new DataErrorsChangedEventArgs(propertyName));
         }
 
+        private bool _hasError;
+        public bool HasError
+        {
+            get { return _hasError; }
+            set { SetProperty(ref _hasError, value); }
+        }
     }
 }

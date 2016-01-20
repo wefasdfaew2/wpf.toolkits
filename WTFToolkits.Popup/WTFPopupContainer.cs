@@ -11,17 +11,17 @@ namespace WTFToolkits.Popup
     {
 
 
-        public string PopupTitle
-        {
-            get { return (string)GetValue(PopupTitleProperty); }
-            set { SetValue(PopupTitleProperty, value); }
-        }
+        //public string PopupTitle
+        //{
+        //    get { return (string)GetValue(PopupTitleProperty); }
+        //    set { SetValue(PopupTitleProperty, value); }
+        //}
 
-        // Using a DependencyProperty as the backing store for PopupTitle.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty PopupTitleProperty =
-            DependencyProperty.Register("PopupTitle", typeof(string), typeof(WTFPopupContainer), new PropertyMetadata(null));
+        //// Using a DependencyProperty as the backing store for PopupTitle.  This enables animation, styling, binding, etc...
+        //public static readonly DependencyProperty PopupTitleProperty =
+        //    DependencyProperty.Register("PopupTitle", typeof(string), typeof(WTFPopupContainer), new PropertyMetadata(null));
 
-
+        public RelayCommand OkCommand { get; set; }
 
         public object PopupContent
         {

@@ -20,12 +20,13 @@ namespace WTFToolkits.Popup
     /// </summary>
     public partial class WTFPopup
     {
-        private WTFPopup(UIElement element, string title)
+        private WTFPopup(UIElement element, string title, Action ok)
         {
             InitializeComponent();
 
             base.PopupContent = element;
             this.Title = title;
+            this.DataContext = (element as Control).DataContext;
             this.CancelButton.Click += delegate
             {
                 var sb = TryFindResource("ClosePopupStoryboard") as Storyboard;
@@ -63,11 +64,12 @@ namespace WTFToolkits.Popup
             {
                 this.Cursor = null;
             };
-            this.OkButton.Click += delegate
-            {
-                this.HasError = true;
-            };
-            this.DataContext = this;
+            //this.OkButton.Click += delegate
+            //{
+            //    // this.HasError = true;
+            //    // ok();
+            //};
+            //this.DataContext = this;
         }
 
         protected override void OnClosed(EventArgs e)
@@ -82,9 +84,9 @@ namespace WTFToolkits.Popup
             this.DragMove();
         }
 
-        public static void Popup(UIElement element, string title)
+        public static void Popup(UIElement element, string title, Action ok)
         {
-            var wtf = new WTFPopup(element, title);
+            var wtf = new WTFPopup(element, title, ok);
             Application.Current.MainWindow.Opacity = 0.5;
             wtf.ShowDialog();
         }

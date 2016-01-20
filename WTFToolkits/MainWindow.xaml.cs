@@ -26,7 +26,10 @@ namespace WTFToolkits
 
             button.Click += delegate
             {
-                WTFToolkits.Popup.WTFPopup.Popup(new UserControl1(), "Poping");
+                var uc = new UserControl1();
+                WTFToolkits.Popup.WTFPopup.Popup(uc, "Poping", () => {
+                    uc.OnSaveModel();
+                });
             };
         }
     }

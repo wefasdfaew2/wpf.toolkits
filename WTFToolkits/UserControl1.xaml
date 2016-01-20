@@ -3,10 +3,60 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+             xmlns:be="clr-namespace:WTFToolkits.Popup;assembly=WTFToolkits.Popup"
+             xmlns:local="clr-namespace:WTFToolkits"
              mc:Ignorable="d" 
-             Background="#f44336"
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-            
-    </Grid>
+             Background="#111"
+             MinWidth="300" Height="Auto">
+    
+    <UserControl.Resources>
+        
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Themes/Generic.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <local:HasTextConverter x:Key="hasTextConverter" />
+
+            <Style TargetType="TextBlock">
+                <Setter Property="Padding" Value="0 8 4 0" />
+                <Setter Property="Foreground" Value="#FFF" />
+            </Style>
+
+            <Style TargetType="TextBox">
+                <Setter Property="Padding" Value="8" />
+                <Setter Property="Margin" Value="0 0 0 8" />
+            </Style>
+
+            <Style TargetType="Button">
+                <Setter Property="Padding" Value="32 8" />
+                <Setter Property="Margin" Value="0 8" />
+                <Setter Property="HorizontalAlignment" Value="Left" />
+            </Style>
+        </ResourceDictionary>
+        
+        
+
+        
+    </UserControl.Resources>
+    
+    <StackPanel Margin="10">
+        <TextBlock Text="Name" />
+        <TextBox Text="{Binding Model.Name, NotifyOnValidationError=True}" x:Name="n" />
+        <!--<ContentControl Content="{Binding ElementName=n, Path=(Validation.Errors).CurrentItem.ErrorContent}"
+                        Foreground="#f44336" />-->
+        <!-- region -->
+        <TextBlock Text="{Binding ElementName=n, Path=(Validation.Errors).CurrentItem.ErrorContent}"
+                   Style="{StaticResource ValidationTextStyle}"/>
+        <!-- endregion -->        
+
+        <TextBlock Text="Description" />
+        <TextBox Text="{Binding Model.Description, NotifyOnValidationError=True, Mode=TwoWay, ValidatesOnNotifyDataErrors=True}" x:Name="d" />
+        <TextBlock Text="{Binding ElementName=d, Path=(Validation.Errors).CurrentItem.ErrorContent}"
+                   Style="{StaticResource ValidationTextStyle}"/>
+
+        <!--<Button Content="Save" Command="{Binding SaveCommand}" />-->
+    </StackPanel>
 </UserControl>

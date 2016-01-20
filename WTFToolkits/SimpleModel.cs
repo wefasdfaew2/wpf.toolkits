@@ -12,10 +12,9 @@ namespace WTFToolkits
     {
         public int Id { get; set; }
 
-
         private string _name;
         [Required(ErrorMessage = "Model name is required")]
-        [StringLength(50, MinimumLength = 3)]
+        [StringLength(50, MinimumLength = 3, ErrorMessage="Name must be between {2} and {1} characters length")]
         public string Name
         {
             get { return _name; }
