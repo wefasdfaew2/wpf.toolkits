@@ -21,7 +21,7 @@ namespace WTFToolkits.Popup
         //public static readonly DependencyProperty PopupTitleProperty =
         //    DependencyProperty.Register("PopupTitle", typeof(string), typeof(WTFPopupContainer), new PropertyMetadata(null));
 
-        public RelayCommand OkCommand { get; set; }
+        // public RelayCommand OkCommand { get; set; }
 
         public object PopupContent
         {
@@ -33,8 +33,6 @@ namespace WTFToolkits.Popup
         public static readonly DependencyProperty PopupContentProperty =
             DependencyProperty.Register("PopupContent", typeof(object), typeof(WTFPopupContainer), new PropertyMetadata(null));
 
-
-
         public bool HasError
         {
             get { return (bool)GetValue(HasErrorProperty); }
@@ -44,7 +42,6 @@ namespace WTFToolkits.Popup
         // Using a DependencyProperty as the backing store for HasError.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HasErrorProperty =
             DependencyProperty.Register("HasError", typeof(bool), typeof(WTFPopupContainer), new PropertyMetadata(false));
-
 
 
         public string ErrorMessage

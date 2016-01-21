@@ -42,22 +42,17 @@ namespace WTFToolkits.Popup
                 };
                 this.BeginStoryboard(sb);
             };
-            this.CustomButton.Click += delegate
-            {
-                this.ErrorMessage = DateTime.Now.ToShortDateString();
-                //this.HasError = !this.HasError;
-            };
-            this.TitleText.PreviewMouseLeftButtonDown += (sender, e) =>
-            {
-                if (e.ClickCount > 1)
-                {
-                    this.WindowState = WindowState == System.Windows.WindowState.Maximized ? WindowState.Normal : System.Windows.WindowState.Maximized;
-                }
-            };
+            //this.TitleText.PreviewMouseLeftButtonDown += (sender, e) =>
+            //{
+            //    if (e.ClickCount > 1)
+            //    {
+            //        this.WindowState = WindowState == System.Windows.WindowState.Maximized ? WindowState.Normal : System.Windows.WindowState.Maximized;
+            //    }
+            //};
             this.PreviewMouseDown += (sender, e) =>
             {
                 if (e.Source is Button) return;
-                if (e.Source is TextBlock) this.ErrorMessage = string.Empty;
+                // if (e.Source is TextBlock) this.ErrorMessage = string.Empty;
                 this.Cursor = Cursors.SizeAll;
             };
             this.PreviewMouseUp += delegate
